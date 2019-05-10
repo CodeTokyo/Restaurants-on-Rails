@@ -1,11 +1,9 @@
-<div id="Meal Selection">
-  <h1>Welcome to Restaurants on Rails</h1>
-  <br>
-  <h5>Browse our selection of restaurants!</h5>
+<div id="Restaurants Selection">
+  <h5>Choose a menu item!</h5>
 </div>
 
 <div class="row">
-  <% @meals.each do |meal| %>
+  <% @restaurant.meals.each do |meal| %>
     <div class="col-md-4">
       <div class="card">
         <% if meal.image.present? %>
@@ -14,7 +12,6 @@
         <div class="card-body">
           <h5 class="card-title"><%= meal.name %></h5>
           <p class="card-text"><%= meal.price_format %></p>
-          <%= link_to("View Menu!", "/meals/#{meal.id}", class: "btn btn-primary") %>
         </div>
         </div>
     </div>

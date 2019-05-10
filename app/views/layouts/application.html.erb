@@ -14,32 +14,32 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/meals">Restaurants on Rails</a>
+      <a class="navbar-brand" href="/restaurants">Restaurants on Rails</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item <%= 'active' if current_page?('/meals') %>">
-            <a class="nav-link" href="/meals">Home <span class="sr-only">(current)</span></a>
-          </li>
-<% if customer_signed_in? %>
-      <li class="nav-item">
-         <%= link_to("#{current_customer.email}", edit_customer_registration_path, class: "nav-link") %>
-       </li>
-       <li class="nav-item">
-         <%= link_to("Logout", destroy_customer_session_path, method: :delete, class: "nav-link") %>
-       </li>
-    <% elsif restaurant_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <% if customer_signed_in? %>
         <li class="nav-item">
-         <%= link_to("#{current_restaurant.email}", edit_restaurant_registration_path, class: "nav-link") %>
-       </li>
-       <li class="nav-item">
-         <%= link_to("Logout", destroy_restaurant_session_path, method: :delete, class: "nav-link") %>
-       </li>
-    <% else %>
-      <li class="nav-item">
+           <%= link_to("#{current_customer.email}", edit_customer_registration_path, class: "nav-link") %>
+         </li>
+         <li class="nav-item">
+           <%= link_to("Logout", destroy_customer_session_path, method: :delete, class: "nav-link") %>
+         </li>
+      <% elsif restaurant_signed_in? %>
+          <li class="nav-item">
+           <%= link_to("#{current_restaurant.email}", edit_restaurant_registration_path, class: "nav-link") %>
+         </li>
+         <li class="nav-item">
+           <%= link_to("Logout", destroy_restaurant_session_path, method: :delete, class: "nav-link") %>
+         </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign Up", '/sign_up', class: "nav-link" %>
+        </li>
+      <!-- <li class="nav-item">
         <%= link_to "Customer Sign Up", new_customer_registration_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
@@ -47,17 +47,17 @@
       </li>
       <li class="nav-item">
         <%= link_to "Restaurant Sign Up", new_restaurant_registration_path, class: "nav-link" %>
-      </li>
+      </li> -->
       <li class="nav-item">
-        <%= link_to "Restaurant Login", new_restaurant_session_path, class: "nav-link" %>
+        <%= link_to "Login", "/customers/sign_in", class: "nav-link" %>
       </li>
     <% end %>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="/restaurants">Restaurants</a>
+      </li>
+    </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Local">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>

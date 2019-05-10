@@ -36,7 +36,10 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    
+    meal = Meal.find(params[:id])
+    meal.destroy
+    flash[:success] = "Meal was removed"
+    redirect_to "/meals"
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="login">
-  <h2>Log in</h2>
+  <h2>Log in as a Customer</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -20,9 +20,13 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
     </div>
   <% end %>
 
   <%= render "customers/shared/links" %>
+</div>
+
+<div class="text-center">
+  <%= link_to("Log in as a Restaurant", "/restaurants/sign_in", class: "btn btn-danger") %>
 </div>

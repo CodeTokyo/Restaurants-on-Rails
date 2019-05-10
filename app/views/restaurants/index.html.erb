@@ -1,0 +1,17 @@
+<h1>Browse through all of your nearby eateries!</h1>
+
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-md-4">
+      <div class="card">
+        <% if restaurant.image.present? %>
+          <%= image_tag(restaurant.image , class: "card-img-top") %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= restaurant.name %></h5>
+          <%= link_to("View Menu!", "/restaurants/#{restaurant.id}", class: "btn btn-primary") %>
+        </div>
+        </div>
+    </div>
+  <% end %>
+</div>
