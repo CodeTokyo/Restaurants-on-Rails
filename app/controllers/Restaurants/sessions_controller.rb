@@ -3,7 +3,7 @@
 class Restaurants::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 include Accessible
-skip_before_action :check_user, only: :destroy
+skip_before_action :check_user, only: [:destroy, :create]
   # GET /resource/sign_in
   # def new
   #   super

@@ -1,0 +1,23 @@
+<h1>Your Order!</h1>
+
+<% @customer_meals.each do |customer_meal|%>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <big><%= customer_meal.meal.name%></big>
+        <small>x<%= customer_meal.amount %></small>
+        <big><%= "$%.2f" % ((customer_meal.meal.price * customer_meal.amount) / 100.00) %></big>
+      </div>
+      <%= link_to("Remove from Cart", "/carts/#{customer_meal.id}", method: :put, class: "btn btn-danger") %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <% if current_customer.customer_meals_in_cart.any? %>
+    <h2><%= current_customer.total_in_cart %></h2>
+    <%= link_to("Checkout", "/orders", method: :post, class: "btn btn-success") %>
+  <% else %>
+    <h2>Your cart is empty. Go buy something!</h2>
+  <% end %>
+</div>

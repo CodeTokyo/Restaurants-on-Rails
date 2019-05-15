@@ -13,7 +13,12 @@
           <h5 class="card-title"><%= meal.name %></h5>
           <p class="card-text"><%= meal.price_format %></p>
         </div>
-        </div>
+        <%= form_tag("/cart", method: :post) do %>
+        <%= hidden_field_tag(:meal_id, meal.id) %>
+        <input type="number" name="amount" placeholder="Quantity" min="1">
+        <%= submit_tag("Add to Cart", class: "btn btn-dark") %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

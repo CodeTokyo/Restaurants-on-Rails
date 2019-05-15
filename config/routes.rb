@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :restaurants
-  devise_for :customers
+  devise_for :restaurants, path: 'restaurants', controllers: {sessions: "restaurants/sessions"}
+  devise_for :customers, path: 'customers', controllers: {sessions: "customers/sessions"}
 
   get '/customers/:id' => 'customers#show' 
 
@@ -22,5 +22,10 @@ Rails.application.routes.draw do
   put '/meals/:id' =>'meals#update'
   delete '/meals/:id' => 'meals#destroy'
 
+  get '/orders' => 'orders#index'
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
 
+  get '/new_text' => 'orders#new_text'
+  post '/notify_customer' => 'orders#send_text'
 end

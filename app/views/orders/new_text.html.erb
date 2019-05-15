@@ -1,0 +1,9 @@
+<h1>Send a text:</h1>
+
+<%= form_tag("/send_text", method: :post) do %>
+  <%= label_tag(:to, "To:") %>
+  <%= text_field_tag(:to) %>
+  <%= label_tag(:body, "Body:") %>
+  <%= text_area_tag(:body) %>
+  <%= submit_tag("Send") %>
+<% end %>

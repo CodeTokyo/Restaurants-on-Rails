@@ -1,0 +1,5 @@
+<h1>Your previous orders:</h1>
+
+<% @orders.each do |order| %>
+  <big><%= order.id %>: <%= order.total %></big>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_001842) do
+ActiveRecord::Schema.define(version: 2019_05_15_015214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2019_05_09_001842) do
   create_table "customer_meals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "meal_id"
+    t.boolean "is_purchased"
+    t.boolean "is_removed"
+    t.integer "order_id"
+    t.integer "amount"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -28,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_001842) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -42,6 +49,12 @@ ActiveRecord::Schema.define(version: 2019_05_09_001842) do
     t.string "image"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_001842) do
     t.string "image"
     t.string "name"
     t.text "description"
+    t.string "phone_number"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end

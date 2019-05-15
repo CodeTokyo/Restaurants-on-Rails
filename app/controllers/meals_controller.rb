@@ -18,7 +18,8 @@ class MealsController < ApplicationController
     @meal = Meal.create(
                         name: params[:name],
                         description: params[:description],
-                        price: params[:price])
+                        price: params[:price],
+                        image: params[:image])
 
     redirect_to("/meals/#{meal.id}")
   end
@@ -32,7 +33,8 @@ class MealsController < ApplicationController
     meal.update(
                 name: params[:name],
                 description: params[:description],
-                price: params[:price])
+                price: params[:price],
+                image: params[:image])
   end
 
   def destroy
