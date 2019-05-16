@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       end
       if client.messages.create(
         from: from,
-        to: "3126134732",
+        to: "3092971379",
         body: @my_order.id) # Creates the message
         flash[:success] = "Text sent!"
       else
