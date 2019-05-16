@@ -4,12 +4,12 @@ Customer.destroy_all
 Restaurant.destroy_all
 
 restaurants = Restaurant.create([ 
-  {name: 'Iron Spike', email: 'ironspike@example.com', password: 'ironspike1', password_confirmation: 'hj8k;cvE'}, 
-  {name: 'Jimmy\'s Pizza',email: 'jimmys@example.com', password: 'jimmys1', password_confirmation: 'jimmys1'}, 
-  {name: 'Whiskey Barrel',email: 'whiskeybarrel@example.com', password: 'whiskey1', password_confirmation: 'whiskey1'}, 
-  {name: 'Baked',email: 'baked@example.com', password: 'baked1', password_confirmation: 'baked1'}, 
-  {name: 'Koreana',email: 'koreana@example.com', password: 'koreana1', password_confirmation: 'koreana1'}, 
-  {name: 'Globar',email: 'globar@example.com', password: 'globar1', password_confirmation: 'globar1'}
+  {name: 'Iron Spike', image: 'iron spike.jpg', email: 'ironspike@example.com', password: 'ironspike1', password_confirmation: 'ironspike1'}, 
+  {name: 'Jimmy\'s Pizza', image: 'jimmys.jpeg', email: 'jimmys@example.com', password: 'jimmys1', password_confirmation: 'jimmys1'}, 
+  {name: 'Whiskey Barrel', image:'whiskey barrel.png', email: 'whiskeybarrel@example.com', password: 'whiskey1', password_confirmation: 'whiskey1'}, 
+  {name: 'Baked', image: 'baked.jpg', email: 'baked@example.com', password: 'baked1', password_confirmation: 'baked1'}, 
+  {name: 'Koreana', image: 'koreana.jpg', email: 'koreana@example.com', password: 'koreana1', password_confirmation: 'koreana1'}, 
+  {name: 'Globar', image: 'globar.jpg', email: 'globar@example.com', password: 'globar1', password_confirmation: 'globar1'}
 ])
 
 whiskey_barrel = Restaurant.find_by_email("whiskeybarrel@example.com")

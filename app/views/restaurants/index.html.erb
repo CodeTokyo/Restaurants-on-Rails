@@ -4,12 +4,12 @@
   <% @restaurants.each do |restaurant| %>
     <div class="col-md-4">
       <div class="card">
+          <h5 class="card-title"><%= restaurant.name %></h5>
         <% if restaurant.image.present? %>
-          <%= image_tag(restaurant.image , class: "card-img-top") %>
+          <%= image_tag("/#{restaurant.image}", class: "card-img-top image") %>
         <% end %>
         <div class="card-body">
-          <h5 class="card-title"><%= restaurant.name %></h5>
-          <%= link_to("View Menu!", "/restaurants/#{restaurant.id}", class: "btn btn-primary") %>
+          <%= link_to("View Menu", "/restaurants/#{restaurant.id}", class: "btn btn-primary") %>
         </div>
       </div>
     </div>

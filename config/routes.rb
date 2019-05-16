@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/customers/:id' => 'customers#show' 
 
-  get '/' => 'restaurants#index'
+  get '/' => 'restaurants#home'
   get '/restaurants' => 'restaurants#index'
   get '/restaurants/:id' => 'restaurants#show'
   get '/sign_up' => 'restaurants#sign_up'

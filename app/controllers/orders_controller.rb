@@ -43,19 +43,38 @@ class OrdersController < ApplicationController
   end
 
   def send_text
-    client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]) # Creates an instance of the Twilio Client to send texts/calls with
+    body = params[:Body]
+    order_id = body.split.first.to_i
+    status = body.split.last.upcase
+    @order = Order.find(order_id)
+    client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]) # Creates an instance of the Twilio Client to send 
+    if status == "DONE"
+      # SEND THE COMPLETE TEXT
+      from = '+13092450166' # Your Twilio number (this one is mine)
 
-    from = '+13092450166' # Your Twilio number (this one is mine)
-
-    if client.messages.create(
+      if client.messages.create(
         from: from,
-        to: current_customer.phone_number
-        body: "Your order is complete") # Creates the message
-      flash[:success] = "Text sent!"
-    else
-      flash[:error] = "Something went wrong."
+        to: @order.customer.phone_number,
+        body: "#{@order.id}: Your order is ready for pickup.") # Creates the message
+        flash[:success] = "Text sent!"
+      else
+        flash[:error] = "Something went wrong."
+      end
+    elsif status = "STARTED"
+      # SEND THE STARTED TEXT
+      from = '+13092450166' # Your Twilio number (this one is mine)
+
+      if client.messages.create(
+        from: from,
+        to: @order.customer.phone_number,
+        body: "#{@order.id}: Your order has been  started.") # Creates the message
+        flash[:success] = "Text sent!"
+      else
+        flash[:error] = "Something went wrong."
+      end
     end
-    redirect_to("/")
+
+    
   end
 
 end
