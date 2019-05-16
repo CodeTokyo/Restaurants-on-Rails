@@ -1,8 +1,15 @@
 class ApplicationController < ActionController::Base
-  ActionController: :Base
   skip_before_action :verify_authenticity_token
+  before_action :configure_permitted_parameters, if: :devise_controller?
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || '/restaurants'
   end
+
+	protected
+
+	def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+	end
+
 end
-  
